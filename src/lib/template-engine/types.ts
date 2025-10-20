@@ -8,85 +8,85 @@ import type React from 'react';
 /**
  * Template metadata interface
  */
-export interface TemplateMetadata {
+export type TemplateMetadata = {
   title: string;
   description?: string;
   keywords?: string[];
   author?: string;
   version?: string;
-}
+};
 
 /**
  * Layout configuration interface
  */
-export interface LayoutConfig {
+export type LayoutConfig = {
   name: string;
   type: 'default' | 'auth' | 'dashboard' | 'landing' | 'custom';
   metadata?: TemplateMetadata;
   slots: LayoutSlot[];
-}
+};
 
 /**
  * Layout slot definition for plugin/theme injection
  */
-export interface LayoutSlot {
+export type LayoutSlot = {
   name: string;
   region: 'header' | 'sidebar' | 'content' | 'footer' | 'custom';
   required: boolean;
   fallback?: React.ReactNode;
   props?: Record<string, any>;
-}
+};
 
 /**
  * Partial component props
  */
-export interface PartialProps {
+export type PartialProps = {
   id?: string;
   className?: string;
   children?: React.ReactNode;
   slot?: string;
   [key: string]: any;
-}
+};
 
 /**
  * View component props
  */
-export interface ViewProps {
+export type ViewProps = {
   layout?: string;
   metadata?: TemplateMetadata;
   slots?: Record<string, React.ReactNode>;
   children?: React.ReactNode;
-}
+};
 
 /**
  * Theme configuration
  */
-export interface ThemeConfig {
+export type ThemeConfig = {
   id: string;
   name: string;
   version: string;
   layouts: Record<string, LayoutConfig>;
   components?: Record<string, React.ComponentType<any>>;
   styles?: string[];
-}
+};
 
 /**
  * Plugin configuration
  */
-export interface PluginConfig {
+export type PluginConfig = {
   id: string;
   name: string;
   version: string;
   slots: Record<string, React.ComponentType<any>>;
-  hooks?: Record<string, Function>;
-}
+  hooks?: Record<string, (...args: any[]) => any>;
+};
 
 /**
  * Template engine context
  */
-export interface TemplateContext {
+export type TemplateContext = {
   theme?: ThemeConfig;
   plugins: PluginConfig[];
   locale: string;
   metadata: TemplateMetadata;
-}
+};

@@ -26,12 +26,15 @@ const TemplateEngineContext = createContext<TemplateContext | null>(null);
 /**
  * Template Engine Provider Props
  */
-interface TemplateEngineProviderProps {
+type TemplateEngineProviderProps = {
   children: React.ReactNode;
   theme?: ThemeConfig;
   plugins?: PluginConfig[];
   locale?: string;
-}
+};
+
+// Default values outside component to prevent unstable references
+const DEFAULT_PLUGINS: PluginConfig[] = [];
 
 /**
  * Template Engine Provider
@@ -40,7 +43,7 @@ interface TemplateEngineProviderProps {
 export function TemplateEngineProvider({
   children,
   theme,
-  plugins = [],
+  plugins = DEFAULT_PLUGINS,
   locale = 'en',
 }: TemplateEngineProviderProps) {
   const contextValue = useMemo<TemplateContext>(
@@ -115,12 +118,12 @@ export function useSlot(slotName: string): React.ReactNode | null {
  * Slot Component
  * Renders content from plugins or fallback
  */
-interface SlotProps {
+type SlotProps = {
   name: string;
   fallback?: React.ReactNode;
   children?: React.ReactNode;
   className?: string;
-}
+};
 
 export function Slot({ name, fallback, children, className }: SlotProps) {
   const slotContent = useSlot(name);
