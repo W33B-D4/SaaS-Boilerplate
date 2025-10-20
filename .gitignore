@@ -1,4 +1,4 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+& "C:/Users/Asus/OneDrive - Politeknik Negeri Bandung/Materi Kuliah/Semester 5/Web/SaaS-Boilerplate/.venv/Scripts/python.exe" -m pip install <nama-paket># See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
 /node_modules
@@ -49,3 +49,7 @@ local
 
 # vercel
 .vercel
+
+# python virtual environments
+.venv/
+venv/
